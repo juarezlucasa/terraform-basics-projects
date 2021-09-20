@@ -15,7 +15,7 @@ variable "profile" {
 }
 
 variable "key_name" {
-  default = "cmf-iplusd-desa-laj.pem"
+  default = "cmf-iplusd-desa-laj"
 }
 
 variable "instance_type" {
