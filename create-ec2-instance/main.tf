@@ -4,13 +4,9 @@ provider "aws" {
   profile = var.profile
 }
 
-resource "aws_default_vpc" "default" {
-
-}
-
 resource "aws_security_group" "poc_patch_manager_sg" {
   name = "poc_patch_manager_sg"
-  vpc_id = aws_default_vpc.default.id
+  vpc_id = var.vpc_id
 
   ingress {
     from_port   = 22
@@ -36,7 +32,7 @@ resource "aws_instance" "poc-patch-manager" {
   key_name               = var.key_name
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.poc_patch_manager_sg.id]
-  subnet_id = tolist(data.aws_subnet_ids.default_subnets.ids)[0]
+  subnet_id = var.subnet_id
 
   connection {
     type        = "ssh"

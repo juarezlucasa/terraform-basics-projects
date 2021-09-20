@@ -21,3 +21,11 @@ variable "key_name" {
 variable "instance_type" {
   default = "t2.micro"
 }
+
+variable "vpc_id" {
+  default = "vpc-36ffd94c"
+}
+
+variable "subnet_id" {
+  default = "subnet-e05442bc"
+}
